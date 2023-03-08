@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>QUEIJO</title>
+  </head>
+  <body>
+    <div class="card"> 
+        <br>
+        <h2>Calculadora de Prejuízo</h2>
+        Insira o preço do queijo por quilo:
+        <input type="number" id="input_preco"><br> <br>
+        Insira a quantidade de queijo produzida por dia (kg):
+        <input type="number" id="input_quantidade"><br> <br>
+        <button onclick="calcular_perda()">CALCULAR PERDA</button> 
+        <br><br>
+        <div id="div_perda"> </div>
+    </div>
+  </body>
+</html>
+<script>
+  function calcular_perda() {
+    var Preco = Number(input_preco.value);
+    var Produção = Number(input_quantidade.value);
+    var PerdaQueijoDia = Produção * 0.15;
+    var PerdaQueijoSemanal = PerdaQueijoDia * 7;
+    var PerdaQueijoMensal = PerdaQueijoDia * 30;
+    var PerdaQueijoAnual = PerdaQueijoDia * 365;
+
+    var PerdaFinanceiraDia = PerdaQueijoDia * Preco;
+    var PerdaFinanceiraSemanal = PerdaQueijoSemanal * Preco;
+    var PerdaFinanceiraMensal = PerdaQueijoMensal * Preco;
+    var PerdaFinanceiraAnual = PerdaQueijoAnual * Preco;
+
+    div_perda.innerHTML = `Diariamente você perde <u>${PerdaQueijoDia}</u> Kg de Queijo e <u>R$${PerdaFinanceiraDia}</u>.<br>
+    Semanalmente você perde <u>${PerdaQueijoSemanal}</u> Kg de Queijo e <u>R$${PerdaFinanceiraSemanal}</u>.<br>
+    Mensalmente você perde <u>${PerdaQueijoMensal}</u> Kg de Queijo e <u>R$${PerdaFinanceiraMensal}</u>.<br>
+    Anualmente você perde <u>${PerdaQueijoAnual}</u> Kg de Queijo e <u>R$${PerdaFinanceiraAnual}</u>.<br>`;
+  }
+</script>
